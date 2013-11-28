@@ -18,5 +18,18 @@ $(document).ready(function() {
 });
 
 function buildPage(data) {
-  console.log(data);
+	console.log("helloworld1");
+  $(".content").empty();
+  $(".content").append(data.response.blog.name);
+  var total_posts = data.response.total_posts;
+  if (total_posts >20)
+  {
+	  total_posts = 20;
+  }
+  for (i=0; i<total_posts; i++)
+  {
+	$(".content").append("<p>Title: " + data.response.posts[i].title + "</p>");
+	$(".content").append("<p>Date: " + data.response.posts[i].date + "</p>");
+	$(".content").append(data.response.posts[i].body + "<hr>");
+	}
 }
