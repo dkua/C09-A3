@@ -23,6 +23,10 @@
   margin-right: auto;
 }
 
+img {
+    max-width: 100%;
+}
+
 a:link {
   color: red;
 }
