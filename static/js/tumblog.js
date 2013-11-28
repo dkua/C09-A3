@@ -34,8 +34,9 @@ function buildPage(data) {
     for (var i=0; i<posts.length; i++) {
       post = posts[i];
       var tumpost = $("<div />").addClass("tumpost").addClass("center");
-      var postTitle = $("<a />").attr("href", post.post_url).append(post.caption);
-      tumpost.append(postTitle);
+      var postDescription = $("<h3 />").append(post.description);
+      tumpost.append(postDescription);
+
       if (post.type === "text") {
         tumpost.append(post.body);
       } else if (post.type === "photo") {
@@ -44,20 +45,23 @@ function buildPage(data) {
         var photo;
         var img;
         var photoCaption;
+        var photoLink;
         for (var j=0; j<photos.length; j++) {
           photo = photos[j];
           img = $("<img />").attr("src", photo.alt_sizes[3].url);
+          photoLink = $("<a />").attr("href", photo.original_size.url).attr("target", "_blank").append(img);
           photoCaption =  $("<p />").html(photo.caption);
-          tumpost.append(img, photoCaption);
+          tumpost.append(photoLink, photoCaption);
         }
       } else {
         var otherPost = $("<p />").text("This is a " + post.type + " post");
-        var postURL = $("<a />").attr("href", post.post_url).text("View here");
-        tumpost.append(otherPost, postURL);
+        tumpost.append(otherPost);
       }
 
-      var postDate = $("<p />").text("Posted " + post.date);
-      tumpost.append(postDate);
+      var postCaption = post.caption;
+      var postURL = $("<a />").attr("href", post.post_url).attr("target", "_blank").text("View post here");
+      var postInfo = $("<p />").text("Posted " + post.date + " by " + post.post_author);
+      tumpost.append(postCaption, postURL, postInfo);
       $(".tumblog").append(tumpost);
     }
   } else {
