@@ -18,7 +18,7 @@ $(document).ready(function() {
 });
 
 function buildPage(data) {
-	console.log("helloworld1");
+	//console.log("helloworld1");
   $(".content").empty();
   $(".content").append(data.response.blog.name);
   var total_posts = data.response.total_posts;
