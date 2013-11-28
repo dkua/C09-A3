@@ -19,4 +19,48 @@ $(document).ready(function() {
 
 function buildPage(data) {
   console.log(data);
+  var respStatus = data.meta.status;
+  if (respStatus === 200) {
+    var response = data.response;
+    var blog = response.blog;
+    var posts = response.posts;
+
+    var title = $("<h1 />").text(blog.title);
+    var description = $("<h3 />").html(blog.description);
+    var postNum = $("<h4 />").text("Has " + response.total_posts + " posts");
+    $(".tumblog").empty().append(title, description, postNum);
+
+    var post;
+    for (var i=0; i<posts.length; i++) {
+      post = posts[i];
+      var tumpost = $("<div />").addClass("tumpost").addClass("center");
+      var postTitle = $("<a />").attr("href", post.post_url).append(post.caption);
+      tumpost.append(postTitle);
+      if (post.type === "text") {
+        tumpost.append(post.body);
+      } else if (post.type === "photo") {
+        var photos = post.photos;
+
+        var photo;
+        var img;
+        var photoCaption;
+        for (var j=0; j<photos.length; j++) {
+          photo = photos[j];
+          img = $("<img />").attr("src", photo.alt_sizes[3].url);
+          photoCaption =  $("<p />").html(photo.caption);
+          tumpost.append(img, photoCaption);
+        }
+      } else {
+        var otherPost = $("<p />").text("This is a " + post.type + " post");
+        var postURL = $("<a />").attr("href", post.post_url).text("View here");
+        tumpost.append(otherPost, postURL);
+      }
+
+      var postDate = $("<p />").text("Posted " + post.date);
+      tumpost.append(postDate);
+      $(".tumblog").append(tumpost);
+    }
+  } else {
+    $(".tumblog").html("<h1>Tumblr returned a " + respStatus + " error<br>Please try another Tumblog</h1>");
+  }
 }

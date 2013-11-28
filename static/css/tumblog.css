@@ -1,0 +1,42 @@
+.tumblog {
+  text-align: center;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-weight: 300;
+}
+
+.tumpost {
+  width: 50%;
+  background-color: #222;
+  color: #fff;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px; /* future proofing */
+  -khtml-border-radius: 10px; /* for old Konqueror browsers */
+  margin-top: 1em;
+  padding: 1em;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+a {
+  text-shadow: none;
+}
+
+a:link {
+  color: red;
+}
+
+a:visited {
+  color: red;
+}
+
+a:hover {
+  color: red;
+}
+
+a:active {
+  color: red;
+}
