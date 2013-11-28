@@ -7,4 +7,4 @@ Project #3 for CSCC09. A simple mobile client capable of displaying the 20 most 
 1. Branson Huang (998216014)
 2. David Kua (998484536)
 3. Yi Zheng (997124632)
-4. Pan Xu (998448201
+4. Pan Xu (998448201)
