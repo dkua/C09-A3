@@ -18,18 +18,43 @@ $(document).ready(function() {
 });
 
 function buildPage(data) {
-	//console.log("helloworld1");
   $(".content").empty();
-  $(".content").append(data.response.blog.name);
+  $(".content").append(data.response.blog.name+"<hr>");
+  
   var total_posts = data.response.total_posts;
-  if (total_posts >20)
+  for (i=0; (i<total_posts && i <20); i++)
   {
-	  total_posts = 20;
-  }
-  for (i=0; i<total_posts; i++)
-  {
-	$(".content").append("<p>Title: " + data.response.posts[i].title + "</p>");
+	
+	
+	if(data.response.posts[i].type == "text")
+	{
+		$(".content").append("<p>" + data.response.posts[i].title + "</p>");
+		$(".content").append("<p>URL: " + data.response.posts[i].post_url + "</p>");
+		$(".content").append(data.response.posts[i].body);
+	}
+	if(data.response.posts[i].type == "photo")
+	{
+		$(".content").append(data.response.posts[i].caption);
+		$(".content").append("<p>URL: " + data.response.posts[i].post_url + "</p>");
+		for (j=0; j<data.response.posts[i].photos.length;j++)
+		{
+			$(".content").append("<img width=\"400\" height=\"225\" src=\"" 
+			+ data.response.posts[i].photos[j].alt_sizes[2].url + "\"</img>");
+			$(".content").append("<p>Caption: " + data.response.posts[i].photos[j].caption + "</p>");
+		}
+		
+	}
+	if(data.response.posts[i].type == "audio")
+	{
+		$(".content").append(data.response.posts[i].player);
+		$(".content").append("<p>Caption: " + data.response.posts[i].caption + "</p>");
+	}
+	if(data.response.posts[i].type == "audio")
+	{
+		
+	}
 	$(".content").append("<p>Date: " + data.response.posts[i].date + "</p>");
-	$(".content").append(data.response.posts[i].body + "<hr>");
+	
+	$(".content").append("<hr>");
 	}
 }
