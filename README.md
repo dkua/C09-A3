@@ -1,6 +1,6 @@
 ## Tumblr Mobile Client
 
-Project #3 for CSCC09. A simple mobile client capable of displaying the 20 most recent posts (compatible formats: text, images) of any Tumblr blog via a search request by the user.
+Project #3 for CSCC09. A simple mobile client capable of displaying the 20 most recent posts of any Tumblr blog via a search request by the user by their username on index.html.
 
 ## Group members
 
