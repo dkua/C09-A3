@@ -107,10 +107,11 @@ function buildPage(data) {
           break;
       }
 
+      var postTags = $("<p />").text("Tags " + post.tags);
       var postCaption = post.caption;
       var postURL = $("<a />").attr("href", post.post_url).attr("target", "_blank").text("View post here");
       var postInfo = $("<p />").text("Posted " + post.date);
-      tumpost.append(postCaption, "<br />",  postURL, postInfo);
+      tumpost.append(postCaption, "<br />",  postURL, postInfo, postTags);
       $(".tumblog").append(tumpost);
     }
   } else {
