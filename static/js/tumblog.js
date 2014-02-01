@@ -8,7 +8,9 @@ $(document).ready(function() {
   $("input").change(function(event) {
     var tumblog = $(this).val() + ".tumblr.com";
     var apiKey = "tq73UxKtx9sdgsCvBTmMqrSOHCkqgfppOzoTzoFQLplVxoj4nJ";
-    var apiUrl = "http://api.tumblr.com/v2/blog/" + tumblog + "/posts?api_key=" + apiKey;
+    //var extraStuff = "&" + "offset=20";
+    var extraStuff = "";
+    var apiUrl = "http://api.tumblr.com/v2/blog/" + tumblog + "/posts?api_key=" + apiKey + extraStuff;
 
     $.ajax({
       url: apiUrl, 
